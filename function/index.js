@@ -1,19 +1,26 @@
-function calculator(a,b){
+// function functionName(parameter1, parameter2, ...) {
+//   // function body
+//   // use the parameters
+//   return value; // optional but common
+// }
 
-console.log(a,b)
-const results = a + b;
-return results
+
+
+
+function greetUser(name){
+    return `Hello, ${name}`
+}
+greetUser("Anas")
+
+function calculateBMI(mass, height) {
+  return mass / (height ** 2);
 }
 
-calculator(50,10)
+calculateBMI(78, 1.69); // ≈ 27.3
 
-function fruitProcessor(apples, oranges) {
-  const juice = `Juice with ${apples} apples and ${oranges} oranges.`;
-  return juice;
+function calculateAge(birthYear, currentYear) {
+  return currentYear - birthYear;
 }
 
-const appleJuice = fruitProcessor(5, 0);
-console.log(appleJuice);
+calculateAge(2002, 2025); // 23
 
-const appleOrangeJuice = fruitProcessor(2, 4);
-console.log(appleOrangeJuice);
