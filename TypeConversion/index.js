@@ -28,16 +28,12 @@ if (age >= 20 || age === 20) {
 // Test data:
 // § Data 1: Dolphins score 96, 108 and 89. Koalas score 88, 91 and 110
 
-let scoreDolphin1 = 96;
-let scoreDolphin2 = 108;
-let scoreDolphin3 = 89;
+
 let averageDolphin = (96+ 108 + 89)/3
 console.log(averageDolphin)
 
-let scoreKoala1 = 88;
-let scoreKoala2 = 91;
-let scoreKoala3 = 110;
-let averageKoala = (scoreKoala1+ scoreKoala2 + scoreKoala3)/3
+
+let averageKoala = (88+ 91 + 110)/3
 console.log(averageKoala)
 
 if (averageKoala > averageDolphin){
@@ -65,4 +61,16 @@ if (averageDolphin === averageKoala && averageDolphin >= 100) {
   console.log("There is a draw 🏆");
 } else {
   console.log("There is no draw ");
+
 }
+
+const drink = age >= 15 ? 'wine' : 'water'
+console.log(`I like to drink ${age >= 18 ? 'wine' : 'water'}`)
+
+function fruitProcessor(apples, oranges){
+    // console.log(apples, oranges);
+    const juice = `Juice with ${apples} apples and ${oranges} oranges`
+    return juice;
+}
+
+console.log(fruitProcessor(5, 0))
