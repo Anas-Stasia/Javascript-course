@@ -40,4 +40,27 @@ console.log(appleOrangeJuice);
 
 const num = Number('23');
 
+// function calcAge1(birthYear){
+//   const age = 2037 - birthYear;
+//   return `The age of this man is ${age}`
+// }
+ 
+// const newAge = calcAge1(2000)
+//  console.log(newAge) 
 
+
+// Function declaration
+function calcAge1(birthYear){
+  return 2037 - birthYear;
+}
+const newAge = calcAge1(2000)
+console.log(newAge)
+
+// Function expression
+
+const calcAge2 = function(birthYear){
+  return 2037 - birthYear;
+  
+}
+const newAge2 = calcAge2(2000)
+console.log(newAge2)
