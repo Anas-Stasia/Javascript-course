@@ -82,7 +82,54 @@ const calcAge2 = function(birthYear){
 const newAge2 = calcAge2(2003)
 console.log(newAge2)
 
-// Arrow functions
+// Arrow functions(One parameter)
 const calcAge3 = birthYear => 2037 - birthYear
 const age3 = calcAge3(2007)
 console.log(age3)
+
+const retirementAge = birthYear => {
+  const age = 2037 - birthYear
+  const retirement = 65 - age
+}
+const reAge = retirementAge(2010)
+console.log(reAge)
+
+// Arrow functions(Two parameter)
+
+const retirementAge2 = (birthYear, firstName)=>{
+  const age1 = 2037 - birthYear
+  const retirement = 65 - age1
+  return `${firstName} retires when he is ${retirement} years old`
+}
+
+const reAge1 = retirementAge2(2000, "Abu")
+console.log(reAge1)
+
+// Functions Calling Other Functions
+function cutFruitPieces(fruit) {
+  return fruit * 4;
+}
+
+function fruitProcessor(apples, oranges) {
+  const applePieces = cutFruitPieces(apples);
+  const orangePieces = cutFruitPieces(oranges);
+
+  const juice = `Juice with ${applePieces} piece of apple and ${orangePieces} pieces of orange.`;
+  return juice;
+}
+console.log(fruitProcessor(2, 3));
+
+function yearsUntilRetirement1(birthYear, firstName){
+const age5 = 2037 - birthYear
+const retirement = 65 - age5;
+return `${firstName} retires when he is ${retirement} years old`
+}
+
+const newAge5 = yearsUntilRetirement1(2008,'Patrick')
+console.log(newAge)
+
+const yearsUntilRetirement1 = function(birthYear,firstName){
+  const age5 = 2037 - birthYear
+const retirement = 65 - age5;
+return `${firstName} retires when he is ${retirement} years old`
+}
