@@ -56,11 +56,33 @@ function calcAge1(birthYear){
 const newAge = calcAge1(2000)
 console.log(newAge)
 
+
+// Function expression
+
+// const calcAge2 = function(birthYear){
+//   return 2037 - birthYear;
+  
+// }
+// const newAge2 = calcAge2(2003)
+// console.log(newAge,newAge2)
+
+// const newAge3 = function(birthYear){
+//    return 2037 - birthYear;
+// }
+// const age3 = newAge3(2000)
+// console.log(age3)
+
+
 // Function expression
 
 const calcAge2 = function(birthYear){
   return 2037 - birthYear;
   
 }
-const newAge2 = calcAge2(2000)
+const newAge2 = calcAge2(2003)
 console.log(newAge2)
+
+// Arrow functions
+const calcAge3 = birthYear => 2037 - birthYear
+const age3 = calcAge3(2007)
+console.log(age3)
