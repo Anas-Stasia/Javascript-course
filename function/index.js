@@ -153,5 +153,14 @@ const total = calculateTotal(50, 2, 0.1);
 console.log(total);
 
 
+function isAdult(birthYear) {
+  const age = 2037 - birthYear;
+  return age >= 18;
+}
+
+console.log(isAdult(2000));
+
+
+
 
 
