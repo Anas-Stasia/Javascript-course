@@ -169,4 +169,9 @@ const bmi = calculateBMI(78, 1.69);
 console.log(bmi);
 
 
+function orderSummary(item, quantity) {
+  return `You ordered ${quantity} ${item}(s).`;
+}
+
+console.log(orderSummary("Burger", 3));
 
