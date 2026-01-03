@@ -143,4 +143,15 @@ function validateLogin(password) {
 }
 
 const message = validateLogin("mypassword123");
-console.log(message);
+console.log(message);function calculateTotal(price, quantity, taxRate) {
+  const subtotal = price * quantity;
+  const tax = subtotal * taxRate;
+  return subtotal + tax;
+}
+
+const total = calculateTotal(50, 2, 0.1);
+console.log(total);
+
+
+
+
