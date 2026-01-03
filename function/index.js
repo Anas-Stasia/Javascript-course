@@ -133,3 +133,14 @@ const yearsUntilRetirement1 = function(birthYear,firstName){
 const retirement = 65 - age5;
 return `${firstName} retires when he is ${retirement} years old`
 }
+
+
+function validateLogin(password) {
+  if (password.length >= 8) {
+    return "Login successful";
+  }
+  return "Password too short";
+}
+
+const message = validateLogin("mypassword123");
+console.log(message);
