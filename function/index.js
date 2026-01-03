@@ -161,6 +161,12 @@ function isAdult(birthYear) {
 console.log(isAdult(2000));
 
 
+function calculateBMI(weight, height) {
+  return weight / (height ** 2);
+}
+
+const bmi = calculateBMI(78, 1.69);
+console.log(bmi);
 
 
 
