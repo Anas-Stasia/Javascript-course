@@ -176,28 +176,17 @@
 // console.log(orderSummary("Burger", 3));
 
 
-let calcAverageKoala = (score1,score2,score3) => {
- let averageScoreKoala = (score1+score2+score3)/3;
- return averageScoreKoala;
-}
-const averageTotalKoala = (calcAverageKoala(65,54,49))
-console.log(averageTotalKoala)
 
+const calcAverage = (score1,score2,score3) => (score1+score2+score3)/3;
+let avgDolphins = calcAverage(44,23,71)
+let avgKoalas = calcAverage(65,54,49)
+console.log(avgDolphins,avgKoalas)
 
-let calcAverageDolphin = (score1,score2,score3) => {
- let averageScoreDolphin = (score1+score2+score3)/3;
- return averageScoreDolphin;
-}
-const averageTotalDolphin = (calcAverageDolphin(44,23,71))
-console.log(averageTotalDolphin)
-
-function checkWinner(averageTotalKoala,averageTotalDolphin){
-  if(averageTotalKoala >= averageTotalDolphin){
-    console.log(`Koalas win (${averageTotalKoala} vs. ${averageTotalDolphin})`)
+function checkWinner(avgDolphins,avgKoalas){
+if(avgDolphins >= avgKoalas){
+ console.log(`Dolphins win (${avgDolphins} vs. ${avgKoalas})`)
   }else{
-    console.log(`Dolphins win (${averageTotalDolphin} vs. ${averageTotalKoala})`)
+    console.log(`Dolphins win (${avgKoalas} vs. ${avgDolphins})`)
   }
-
 }
-
-checkWinner(averageTotalDolphin,averageTotalKoala)
+checkWinner(avgDolphins,avgKoalas)
