@@ -177,7 +177,7 @@
 
 
 let calcAverageKoala = (score1,score2,score3) => {
- let averageScoreKoala = (score1+score2+score3/3);
+ let averageScoreKoala = (score1+score2+score3)/3;
  return averageScoreKoala;
 }
 const averageTotalKoala = (calcAverageKoala(65,54,49))
@@ -185,8 +185,19 @@ console.log(averageTotalKoala)
 
 
 let calcAverageDolphin = (score1,score2,score3) => {
- let averageScoreDolphin = (score1+score2+score3/3);
+ let averageScoreDolphin = (score1+score2+score3)/3;
  return averageScoreDolphin;
 }
 const averageTotalDolphin = (calcAverageDolphin(44,23,71))
 console.log(averageTotalDolphin)
+
+function checkWinner(averageTotalKoala,averageTotalDolphin){
+  if(averageTotalKoala >= averageTotalDolphin){
+    console.log(`Koalas win (${averageTotalKoala} vs. ${averageTotalDolphin})`)
+  }else{
+    console.log(`Dolphins win (${averageTotalDolphin} vs. ${averageTotalKoala})`)
+  }
+
+}
+
+checkWinner(averageTotalDolphin,averageTotalKoala)
