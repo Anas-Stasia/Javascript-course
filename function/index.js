@@ -224,12 +224,18 @@ console.log(age3)
 //  Takes a number
 //  Returns true if even, otherwise false
 
-function isEven(number){
-  if(number =  even){
-    console.log('true')
-  }else{
-    console.log('false')
+
+function isEven(number) {
+  if (number % 2 === 0) {
+    return true;
+  } else {
+    return false;
   }
 }
 
- isEven(8)
+
+
+console.log(isEven(6))
+
+console.log(isEven(7))
+
