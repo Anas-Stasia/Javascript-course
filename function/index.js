@@ -134,48 +134,19 @@
 // return `${firstName} retires when he is ${retirement} years old`
 // }
 
-
-// function validateLogin(password) {
-//   if (password.length >= 8) {
-//     return "Login successful";
-//   }
-//   return "Password too short";
-// }
-
-// const message = validateLogin("mypassword123");
-// console.log(message);function calculateTotal(price, quantity, taxRate) {
-//   const subtotal = price * quantity;
-//   const tax = subtotal * taxRate;
-//   return subtotal + tax;
-// }
-
-// const total = calculateTotal(50, 2, 0.1);
-// console.log(total);
-
-
-// function isAdult(birthYear) {
-//   const age = 2037 - birthYear;
-//   return age >= 18;
-// }
-
-// console.log(isAdult(2000));
-
-
-// function calculateBMI(weight, height) {
-//   return weight / (height ** 2);
-// }
-
-// const bmi = calculateBMI(78, 1.69);
-// console.log(bmi);
-
-
-// function orderSummary(item, quantity) {
-//   return `You ordered ${quantity} ${item}(s).`;
-// }
-
-// console.log(orderSummary("Burger", 3));
-
-
+// Your tasks:
+// 1. Create an arrow function 'calcAverage' to calculate the average of 3 scores
+// 2. Use the function to calculate the average for both teams
+// 3. Create a function 'checkWinner' that takes the average score of each team 
+// as parameters ('avgDolhins' and 'avgKoalas'), and then logs the winner 
+// to the console, together with the victory points, according to the rule above. 
+// Example: "Koalas win (30 vs. 13)"
+// 4. Use the 'checkWinner' function to determine the winner for both Data 1 and 
+// Data 2
+// 5. Ignore draws this time
+// Test data:
+// § Data 1: Dolphins score 44, 23 and 71. Koalas score 65, 54 and 49
+// § Data 2: Dolphins score 85, 54 and 41. Koalas score 23, 34 and 2
 
 const calcAverage = (score1,score2,score3) => (score1+score2+score3)/3;
 let avgDolphins = calcAverage(44,23,71)
@@ -194,7 +165,49 @@ checkWinner(avgDolphins,avgKoalas)
 checkWinner(576, 111);
 
 // Test 2
-scoreDolphins = calcAverage(85, 54, 41);
-scoreKoalas = calcAverage(23, 34, 27);
-console.log(scoreDolphins, scoreKoalas);
-checkWinner(scoreDolphins, scoreKoalas);
+avgDolphins = calcAverage(85, 54, 41);
+avgKoalas = calcAverage(23, 34, 27);
+console.log(avgDolphins, avgKoalas);
+checkWinner(avgDolphins, avgKoalas);
+
+
+ // Write a function addNumbers that:
+// Takes two numbers
+// Returns their sum
+
+const  addNumbers = (a,b) => a + b;
+const sum = addNumbers(4, 5)
+console.log(sum)
+
+function addNumber(a,b){
+  const sum = a + b;
+  return sum
+}
+
+const total = addNumber(4,6)
+console.log(total)
+
+
+// Write a function calcAge that:
+// Takes birthYear
+// Returns the age in the year 2037
+
+
+const calcAge = (birthYear) => 2037 - birthYear;
+const age = calcAge(2000);
+console.log(age)
+
+
+function calcAge2(birthYear){
+  return 2037 - birthYear
+}
+
+const age2 = calcAge2(2008);
+console.log(age2)
+
+const calcAge3 = function(birthYear){
+  return 2037 - birthYear
+}
+
+const age3 = calcAge2(2008);
+console.log(age3)
