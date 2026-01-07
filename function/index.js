@@ -211,3 +211,25 @@ const calcAge3 = function(birthYear){
 
 const age3 = calcAge2(2008);
 console.log(age3)
+
+// Create an arrow function calcAverage that:
+// Takes 3 scores
+// Returns the average
+
+ let calcAverage2 = (a, b, c) => (a + b + c)/3;
+ let avgTotal = calcAverage2(10,20,30)
+ console.log(avgTotal)
+
+//  Write a function isEven that:
+//  Takes a number
+//  Returns true if even, otherwise false
+
+function isEven(number){
+  if(number =  even){
+    console.log('true')
+  }else{
+    console.log('false')
+  }
+}
+
+ isEven(8)
