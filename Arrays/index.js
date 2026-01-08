@@ -59,3 +59,28 @@ if (friends.includes('Stasia')){
 // 4. Bonus: Create an array 'total' containing the total values, so the bill + tip
 // Test data: 125, 555 and 4
 
+const calcTip = (bill) => {
+    if(bill >= 50 && bill >= 300){
+        return bill * 0.15
+    }else {
+        return bill * 0.15
+    }
+}
+console.log(calcTip(100))
+
+const bills = [ 125, 555, 44]
+
+const tips = [
+    calcTip(bills[0]),
+    calcTip(bills[1]),
+    calcTip(bills[3])
+] 
+
+const total = [
+    bills[0] + tips[0],
+    bills[1] + tips[1],
+    bills[2] + tips[3]
+]
+console.log(bills);
+console.log(total)
+console.log(tips)
