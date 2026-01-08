@@ -15,22 +15,22 @@ console.log(anas['last' + nameKey]);
 
 // console.log(anas.'last' + nameKey)
 
-const interestedIn = prompt('What do you want to know about Anas? Choose between firstName, lastName,age,job, and friends');
+// const interestedIn = prompt('What do you want to know about Anas? Choose between firstName, lastName,age,job, and friends');
 
-if(anas[interestedIn]){
-    console.log(anas[interestedIn])
-} else {
-    console.log('Wrong request! Choose between firstName, lastName, age, job, and friends')
-}
-console.log(anas[interestedIn])
+// if(anas[interestedIn]){
+//     console.log(anas[interestedIn])
+// } else {
+//     console.log('Wrong request! Choose between firstName, lastName, age, job, and friends')
+// }
+// console.log(anas[interestedIn])
 
-anas.location = 'Ghana';
-anas['twitter'] = '@Anastasia';
-console.log(anas);
+// anas.location = 'Ghana';
+// anas['twitter'] = '@Anastasia';
+// console.log(anas);
 
 // Challenge
 // "Jonas has 3 friends, and his best friend is called Michael"
-console.log(`${jonas.firstName} has ${jonas.friends.length} friends, and his best friend is called ${jonas.friends[0]}`);
+console.log(`${anas.firstName} has ${anas.friends.length} friends, and his best friend is called ${anas.friends[0]}`);
 
 console.log(`${anas.firstName} has 3 friends: ${anas.friends[0]},${anas.friends[1]}, ${anas.friends[2]} and his best friend is called ${anas.friends[3]} `)
 
