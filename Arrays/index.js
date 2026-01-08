@@ -20,3 +20,19 @@ console.log(friends[friends.length - 1])
 //Unshift add elements to the beginning
 friends.unshift('Patrick')
 console.log(friends)
+
+// Remove last elements 
+friends.pop();
+const popped = friends.pop();
+console.log(popped)
+console.log(friends)
+
+//Remove first element
+friends.shift();
+console.log(friends)
+
+console.log(friends.indexOf('Anas'))
+
+//checks if the element is in the array
+console.log(friends.includes('Stasia'))
+console.log(friends.includes('Enoch'))
