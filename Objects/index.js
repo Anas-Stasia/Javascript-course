@@ -81,4 +81,16 @@ console.log('Monthly sales:', monthlySales);
 console.log('Total sales:', totalSales);
 // Output: Total sales: 86000
 
+const stack = [];
+
+// Push items onto the stack (add to the end)
+stack.push('Task 1');
+stack.push('Task 2');
+stack.push('Task 3');
+console.log('Stack after pushes:', stack);
+
+// Pop the last item off the stack (remove from the end)
+const lastTask = stack.pop();
+console.log('Removed item:', lastTask); // Output: Task 3
+console.log('Stack after pop:', stack);
 
