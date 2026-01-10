@@ -70,5 +70,15 @@ console.log('Original numbers:', numbers);
 console.log('Even numbers:', evenNumbers);
 // Output: Even numbers: [ 2, 4, 6, 8, 10 ]
 
+const monthlySales = [15000, 22000, 18000, 31000];
+
+// Calculate the total annual sales
+const totalSales = monthlySales.reduce((accumulator, currentValue) => {
+  return accumulator + currentValue;
+}, 0); // The 0 is the initial value for the accumulator
+
+console.log('Monthly sales:', monthlySales);
+console.log('Total sales:', totalSales);
+// Output: Total sales: 86000
 
 
