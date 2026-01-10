@@ -50,3 +50,14 @@ console.log('Cart after adding Butter:', shoppingCart);
 shoppingCart.splice(1, 1); //
 console.log('Cart after removing Bread:', shoppingCart);
 
+
+const productsInCents = [1200, 799, 2500];
+
+// Convert prices from cents to dollars
+const productsInDollars = productsInCents.map(price => price / 100); //
+
+console.log('Prices in Cents:', productsInCents);
+console.log('Prices in Dollars:', productsInDollars);
+// Output: Prices in Dollars: [ 12, 7.99, 25 ]
+
+
