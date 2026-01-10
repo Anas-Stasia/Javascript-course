@@ -37,4 +37,16 @@ console.log(`${anas.firstName} has 3 friends: ${anas.friends[0]},${anas.friends[
 console.log(`${anas.firstName} has ${anas.friends.length} friends and his best friend is called ${anas.friends[3]} `)
 
 
+// Initial shopping cart
+let shoppingCart = ['Milk', 'Bread', 'Eggs'];
+console.log('Initial cart:', shoppingCart);
+
+// Add a new item to the end using push()
+shoppingCart.push('Butter'); //
+console.log('Cart after adding Butter:', shoppingCart);
+
+// Remove the second item ('Bread') using splice()
+// splice(startIndex, deleteCount)
+shoppingCart.splice(1, 1); //
+console.log('Cart after removing Bread:', shoppingCart);
 
