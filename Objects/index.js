@@ -61,3 +61,14 @@ console.log('Prices in Dollars:', productsInDollars);
 // Output: Prices in Dollars: [ 12, 7.99, 25 ]
 
 
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+// Get only the even numbers
+const evenNumbers = numbers.filter(number => number % 2 === 0); //
+
+console.log('Original numbers:', numbers);
+console.log('Even numbers:', evenNumbers);
+// Output: Even numbers: [ 2, 4, 6, 8, 10 ]
+
+
+
