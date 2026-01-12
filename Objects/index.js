@@ -94,3 +94,15 @@ const lastTask = stack.pop();
 console.log('Removed item:', lastTask); // Output: Task 3
 console.log('Stack after pop:', stack);
 
+const stasia = {
+  firstName: 'Anas',
+  lastName: 'Ndanwea',
+  birthYeah: 1991,
+  job: 'student',
+  friends: ['Viera', 'Nina', 'Enoch'],
+  hasDriversLicense: true,
+  calcAge:function(birthYear){
+    return 2037 - birthYear
+  }
+}
+console.log(stasia.calcAge(2000))
