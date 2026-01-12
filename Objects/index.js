@@ -97,12 +97,33 @@ console.log('Stack after pop:', stack);
 const stasia = {
   firstName: 'Anas',
   lastName: 'Ndanwea',
-  birthYeah: 1991,
+  birthYeah: 2006,
   job: 'student',
   friends: ['Viera', 'Nina', 'Enoch'],
   hasDriversLicense: true,
-  calcAge:function(birthYear){
-    return 2037 - birthYear
+
+//   calcAge: function () {
+//     return 2037 - this.birthYear
+//   }
+// }
+// console.log(stasia.calcAge())
+
+// console.log(stasia['calcAge'](2003))
+calcAge: function () {
+    this.age = 2037 - this.birthYear
+    return this.age
+},
+
+  getSummary : function() {
+    return `${this.firstName} is a ${this.calcAge()} year old ${anas.jobjob} and he has a driver's ${hasDriversLicense ? 'a' : 'no'}`
   }
 }
-console.log(stasia.calcAge(2000))
+   console.log(anas.age)
+   console.log(anas.getSummary)
+
+//Challenge
+// Jonas is a 46-year old teacher, and he has driver's license
+
+
+
+
