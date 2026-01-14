@@ -161,85 +161,9 @@ const john = {
    john.calcBMI();
    console.log(mark.bmi,john.bmi)
 
-   if (mark.bmi > john.bmi) {
-  console.log(
-    `${mark.fullName}'s BMI (${mark.bmi.toFixed(1)}) is higher than ${john.fullName}'s (${john.bmi.toFixed(1)})!`
-  );
-} else {
-  console.log(
-    `${john.fullName}'s BMI (${john.bmi.toFixed(1)}) is higher than ${mark.fullName}'s (${mark.bmi.toFixed(1)})!`
-  );
-}
-
-// Looping Backwards and Loops in Loops
-const jonas = [
-  'Jonas',
-  'Schmedtmann',
-  2037 - 1991,
-  'teacher',
-  ['Michael', 'Peter', 'Steven'],
-  true
-];
-
-// 0, 1, ..., 4
-// 4, 3, ..., 0
-
-for (let i = jonas.length - 1; i >= 0; i--) {
-  console.log(i, jonas[i]);
-}
-
-for (let exercise = 1; exercise < 4; exercise++) {
-  console.log(`-------- Starting exercise ${exercise}`);
-
-  for (let rep = 1; rep < 6; rep++) {
-    console.log(`Exercise ${exercise}: Lifting weight repetition ${rep} 🏋️‍♀️`);
-  }
-}
-
-///////////////////////////////////////
-// The while Loop
-for (let rep = 1; rep <= 10; rep++) {
-  console.log(`Lifting weights repetition ${rep} 🏋️‍♀️`);
-}
-
-let rep = 1;
-while (rep <= 10) {
-  // console.log(`WHILE: Lifting weights repetition ${rep} 🏋️‍♀️`);
-  rep++;
-}
-
-let dice = Math.trunc(Math.random() * 6) + 1;
-
-while (dice !== 6) {
-  console.log(`You rolled a ${dice}`);
-  dice = Math.trunc(Math.random() * 6) + 1;
-  if (dice === 6) console.log('Loop is about to end...');
-}
-
-const calcTip = function (bill) {
-  return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
-}
-const bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
-const tips = [];
-const totals = [];
-
-for (let i = 0; i < bills.length; i++) {
-  const tip = calcTip(bills[i]);
-  tips.push(tip);
-  totals.push(tip + bills[i]);
-}
-console.log(bills, tips, totals);
-
-const calcAverage = function (arr) {
-  let sum = 0;
-  for (let i = 0; i < arr.length; i++) {
-    // sum = sum + arr[i];
-    sum += arr[i];
-  }
-  return sum / arr.length;
-}
-console.log(calcAverage([2, 3, 7]));
-console.log(calcAverage(totals));
-console.log(calcAverage(tips));
-
+   if(mark.bmi >= john.bmi){
+    console.log(`${mark.fullName}'s BMI (${mark.bmi}) is higher than John's's (${john.bmi})`)
+   }else{
+    console.log(`${john.fullName}'s BMI (${john.bmi}) is higher than Mark's (${mark.bmi})`)
+   }
  
