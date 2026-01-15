@@ -59,4 +59,25 @@ for (let i = 0; i < buttons.length; i++) {
         console.log(`Button ${i + 1} clicked`);
         e.target.style.backgroundColor = '#4CAF50';
     });
+
+
+    // Generate table rows from data
+const employees = [
+    { id: 1, name: "Sarah Connor", department: "Engineering" },
+    { id: 2, name: "John Smith", department: "Marketing" },
+    { id: 3, name: "Emma Wilson", department: "Sales" }
+];
+
+let tableHTML = '<table><tr><th>ID</th><th>Name</th><th>Department</th></tr>';
+
+for (let i = 0; i < employees.length; i++) {
+    tableHTML += `<tr>
+        <td>${employees[i].id}</td>
+        <td>${employees[i].name}</td>
+        <td>${employees[i].department}</td>
+    </tr>`;
+}
+
+tableHTML += '</table>';
+console.log(tableHTML);
 }
