@@ -20,3 +20,31 @@ const tax = subtotal * 0.08;
 const total = subtotal + tax;
 console.log(`Subtotal: $${subtotal.toFixed(2)}`);
 console.log(`Total with tax: $${total.toFixed(2)}`);
+
+
+
+
+// Validate multiple form fields
+const formData = {
+    email: "user@example.com",
+    password: "Pass123!",
+    age: "25",
+    username: "john_doe"
+};
+
+const errors = [];
+for (let field in formData) {
+    if (formData[field].trim() === "") {
+        errors.push(`${field} is required`);
+    }
+    
+    if (field === "email" && !formData[field].includes("@")) {
+        errors.push("Invalid email format");
+    }
+    
+    if (field === "password" && formData[field].length < 8) {
+        errors.push("Password must be at least 8 characters");
+    }
+}
+
+console.log(errors.length === 0 ? "Form is valid!" : errors);
