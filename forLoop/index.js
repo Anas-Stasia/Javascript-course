@@ -81,3 +81,26 @@ for (let i = 0; i < employees.length; i++) {
 tableHTML += '</table>';
 console.log(tableHTML);
 }
+
+
+
+// Filter and transform API data
+const apiResponse = [
+    { userId: 1, status: "active", lastLogin: "2024-01-10" },
+    { userId: 2, status: "inactive", lastLogin: "2023-11-15" },
+    { userId: 3, status: "active", lastLogin: "2024-01-14" },
+    { userId: 4, status: "active", lastLogin: "2024-01-12" }
+];
+
+const activeUsers = [];
+for (let i = 0; i < apiResponse.length; i++) {
+    if (apiResponse[i].status === "active") {
+        activeUsers.push({
+            id: apiResponse[i].userId,
+            lastSeen: apiResponse[i].lastLogin
+        });
+    }
+}
+
+console.log(`Active users: ${activeUsers.length}`);
+console.log(activeUsers);
