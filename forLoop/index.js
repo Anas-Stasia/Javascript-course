@@ -104,3 +104,32 @@ for (let i = 0; i < apiResponse.length; i++) {
 
 console.log(`Active users: ${activeUsers.length}`);
 console.log(activeUsers);
+
+
+
+// Countdown timer with for loop
+function startCountdown(seconds) {
+    let count = seconds;
+    
+    const interval = setInterval(() => {
+        console.log(`Time remaining: ${count} seconds`);
+        count--;
+        
+        if (count < 0) {
+            clearInterval(interval);
+            console.log("Countdown complete!");
+        }
+    }, 1000);
+}
+
+// Alternative: Generate time slots for scheduling
+const timeSlots = [];
+for (let hour = 9; hour <= 17; hour++) {
+    for (let minute = 0; minute < 60; minute += 30) {
+        const time = `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
+        timeSlots.push(time);
+    }
+}
+
+console.log("Available appointment times:", timeSlots);
+// Output: ["09:00", "09:30", "10:00", "10:30", ...]
