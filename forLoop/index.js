@@ -48,3 +48,15 @@ for (let field in formData) {
 }
 
 console.log(errors.length === 0 ? "Form is valid!" : errors);
+
+
+
+// Add click handlers to multiple buttons
+const buttons = document.querySelectorAll('.action-button');
+
+for (let i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener('click', function(e) {
+        console.log(`Button ${i + 1} clicked`);
+        e.target.style.backgroundColor = '#4CAF50';
+    });
+}
