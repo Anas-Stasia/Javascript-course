@@ -133,3 +133,30 @@ for (let hour = 9; hour <= 17; hour++) {
 
 console.log("Available appointment times:", timeSlots);
 // Output: ["09:00", "09:30", "10:00", "10:30", ...]
+
+
+
+
+
+// Search products by keyword and price range
+const products = [
+    { id: 1, name: "Wireless Headphones", category: "Electronics", price: 89.99 },
+    { id: 2, name: "Running Shoes", category: "Sports", price: 120.00 },
+    { id: 3, name: "Bluetooth Speaker", category: "Electronics", price: 45.50 },
+    { id: 4, name: "Yoga Mat", category: "Sports", price: 29.99 }
+];
+
+const searchTerm = "bluetooth";
+const maxPrice = 100;
+const results = [];
+
+for (let i = 0; i < products.length; i++) {
+    const nameMatch = products[i].name.toLowerCase().includes(searchTerm.toLowerCase());
+    const priceMatch = products[i].price <= maxPrice;
+    
+    if (nameMatch && priceMatch) {
+        results.push(products[i]);
+    }
+}
+
+console.log(`Found ${results.length} matching products:`, results);
