@@ -287,3 +287,28 @@ function checkPasswordStrength(password) {
 }
 
 console.log(checkPasswordStrength("MyP@ss123"));
+
+
+
+// Parse CSV string into structured data
+const csvData = `Name,Email,Age,City
+John Doe,john@email.com,28,New York
+Jane Smith,jane@email.com,34,Los Angeles
+Bob Johnson,bob@email.com,45,Chicago`;
+
+const lines = csvData.split('\n');
+const headers = lines[0].split(',');
+const users = [];
+
+for (let i = 1; i < lines.length; i++) {
+    const values = lines[i].split(',');
+    const user = {};
+    
+    for (let j = 0; j < headers.length; j++) {
+        user[headers[j]] = values[j];
+    }
+    
+    users.push(user);
+}
+
+console.log('Parsed users:', users);
