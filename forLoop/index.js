@@ -221,3 +221,29 @@ for (let i = 0; i < emailList.length; i++) {
 console.log(`Original count: ${emailList.length}`);
 console.log(`Unique count: ${uniqueEmails.length}`);
 console.log('Unique emails:', uniqueEmails);
+
+
+// Calculate sum of all elements in 2D array (matrix)
+const salesData = [
+    [1200, 1500, 1800, 2000], // Q1 monthly sales
+    [2200, 1900, 2100, 2400], // Q2 monthly sales
+    [2600, 2800, 3000, 2900], // Q3 monthly sales
+    [3200, 3400, 3100, 3500]  // Q4 monthly sales
+];
+
+let totalSales = 0;
+const quarterlySales = [];
+
+for (let i = 0; i < salesData.length; i++) {
+    let quarterTotal = 0;
+    
+    for (let j = 0; j < salesData[i].length; j++) {
+        quarterTotal += salesData[i][j];
+        totalSales += salesData[i][j];
+    }
+    
+    quarterlySales.push(quarterTotal);
+    console.log(`Q${i + 1} Total: $${quarterTotal}`);
+}
+
+console.log(`Annual Total: $${totalSales}`);
