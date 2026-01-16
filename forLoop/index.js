@@ -247,3 +247,43 @@ for (let i = 0; i < salesData.length; i++) {
 }
 
 console.log(`Annual Total: $${totalSales}`);
+
+
+
+// Analyze password strength
+function checkPasswordStrength(password) {
+    let score = 0;
+    const criteria = {
+        length: false,
+        uppercase: false,
+        lowercase: false,
+        numbers: false,
+        special: false
+    };
+    
+    // Check length
+    if (password.length >= 8) {
+        criteria.length = true;
+        score += 20;
+    }
+    
+    // Check character types
+    for (let i = 0; i < password.length; i++) {
+        const char = password[i];
+        
+        if (char >= 'A' && char <= 'Z') criteria.uppercase = true;
+        if (char >= 'a' && char <= 'z') criteria.lowercase = true;
+        if (char >= '0' && char <= '9') criteria.numbers = true;
+        if ('!@#$%^&*()_+-=[]{}|;:,.<>?'.includes(char)) criteria.special = true;
+    }
+    
+    if (criteria.uppercase) score += 20;
+    if (criteria.lowercase) score += 20;
+    if (criteria.numbers) score += 20;
+    if (criteria.special) score += 20;
+    
+    const strength = score < 40 ? 'Weak' : score < 70 ? 'Medium' : 'Strong';
+    return { score, strength, criteria };
+}
+
+console.log(checkPasswordStrength("MyP@ss123"));
