@@ -196,3 +196,28 @@ for (let i = 0; i < images.length; i++) {
 }
 
 console.log(`\nProcessed ${processedImages.length} of ${images.length} images`);
+
+
+// Remove duplicates from array
+const emailList = [
+    "user1@example.com",
+    "user2@example.com",
+    "user1@example.com",
+    "user3@example.com",
+    "user2@example.com",
+    "user4@example.com"
+];
+
+const uniqueEmails = [];
+const seen = {};
+
+for (let i = 0; i < emailList.length; i++) {
+    if (!seen[emailList[i]]) {
+        uniqueEmails.push(emailList[i]);
+        seen[emailList[i]] = true;
+    }
+}
+
+console.log(`Original count: ${emailList.length}`);
+console.log(`Unique count: ${uniqueEmails.length}`);
+console.log('Unique emails:', uniqueEmails);
