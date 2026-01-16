@@ -160,3 +160,39 @@ for (let i = 0; i < products.length; i++) {
 }
 
 console.log(`Found ${results.length} matching products:`, results);
+
+
+
+// Simulate batch processing images with progress tracking
+const images = [
+    { name: "photo1.jpg", size: 2500 },
+    { name: "photo2.jpg", size: 3200 },
+    { name: "photo3.jpg", size: 1800 },
+    { name: "photo4.jpg", size: 4100 },
+    { name: "photo5.jpg", size: 2900 }
+];
+
+const targetSize = 1920;
+const processedImages = [];
+
+console.log("Starting batch resize...\n");
+
+for (let i = 0; i < images.length; i++) {
+    const image = images[i];
+    const percentage = ((i + 1) / images.length * 100).toFixed(0);
+    
+    // Simulate processing
+    if (image.size > targetSize) {
+        processedImages.push({
+            name: image.name,
+            originalSize: image.size,
+            newSize: targetSize,
+            reduced: image.size - targetSize
+        });
+        console.log(`[${percentage}%] Resized ${image.name}: ${image.size}px → ${targetSize}px`);
+    } else {
+        console.log(`[${percentage}%] Skipped ${image.name}: already optimized`);
+    }
+}
+
+console.log(`\nProcessed ${processedImages.length} of ${images.length} images`);
