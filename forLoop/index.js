@@ -312,3 +312,10 @@ for (let i = 1; i < lines.length; i++) {
 }
 
 console.log('Parsed users:', users);
+
+
+const fruits = ['apple', 'banana', 'orange'];
+
+for (let i = 0; i < fruits.length; i++) {
+  console.log(fruits[i]);
+}
