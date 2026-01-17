@@ -337,3 +337,10 @@ for (let i = 1; i <= 5; i++) {
   console.log('*'.repeat(i));
 }
 
+
+const word = 'JavaScript';
+
+for (let i = 0; i < word.length; i++) {
+  console.log(word[i]);
+}
+
