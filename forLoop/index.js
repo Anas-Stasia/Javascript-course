@@ -330,3 +330,10 @@ for (let i = 1; i <= 5; i++) {
 }
 
 console.log(sum); // 15
+
+
+
+for (let i = 1; i <= 5; i++) {
+  console.log('*'.repeat(i));
+}
+
