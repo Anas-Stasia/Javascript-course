@@ -429,3 +429,48 @@ const socialNetwork = {
 const path = findShortestPath(socialNetwork, 'Alice', 'Frank');
 console.log(`Shortest path: ${path.join(' → ')}`);
 // Output: Alice → Bob → David → Frank
+
+
+
+// Calculate Fibonacci sequence with memoization
+function fibonacciSequence(n) {
+    const memo = { 0: 0, 1: 1 };
+    const sequence = [0, 1];
+    
+    for (let i = 2; i <= n; i++) {
+        // Check memo first
+        if (memo[i] !== undefined) {
+            sequence.push(memo[i]);
+            continue;
+        }
+        
+        // Calculate and store
+        memo[i] = memo[i - 1] + memo[i - 2];
+        sequence.push(memo[i]);
+    }
+    
+    return {
+        sequence: sequence,
+        nthValue: memo[n],
+        memo: memo
+    };
+}
+
+// Advanced: Find Fibonacci numbers under a limit
+function fibonacciUnderLimit(limit) {
+    const result = [];
+    let a = 0, b = 1;
+    
+    for (let current = a; current < limit; ) {
+        result.push(current);
+        const next = a + b;
+        a = b;
+        b = next;
+        current = a;
+    }
+    
+    return result;
+}
+
+console.log(fibonacciSequence(10));
+console.log("Fibonacci under 1000:", fibonacciUnderLimit(1000));
