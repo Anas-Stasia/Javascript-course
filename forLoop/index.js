@@ -474,3 +474,91 @@ function fibonacciUnderLimit(limit) {
 
 console.log(fibonacciSequence(10));
 console.log("Fibonacci under 1000:", fibonacciUnderLimit(1000));
+
+
+
+
+
+// Generate all permutations of an array
+function generatePermutations(arr) {
+    const results = [];
+    
+    function permute(current, remaining) {
+        if (remaining.length === 0) {
+            results.push([...current]);
+            return;
+        }
+        
+        for (let i = 0; i < remaining.length; i++) {
+            const newCurrent = [...current, remaining[i]];
+            const newRemaining = [...remaining.slice(0, i), ...remaining.slice(i + 1)];
+            permute(newCurrent, newRemaining);
+        }
+    }
+    
+    permute([], arr);
+    return results;
+}
+
+// Iterative approach for better performance
+function permuteIterative(arr) {
+    const result = [arr.slice()];
+    const c = new Array(arr.length).fill(0);
+    let i = 1;
+    
+    while (i < arr.length) {
+        if (c[i] < i) {
+            const swapIdx = i % 2 === 0 ? 0 : c[i];
+            [arr[swapIdx], arr[i]] = [arr[i], arr[swapIdx]];
+            result.push(arr.slice());
+            c[i]++;
+            i = 1;
+        } else {
+            c[i] = 0;
+            i++;
+        }
+    }
+    
+    return result;
+}
+
+// Practical use: Find best arrangement
+const tasks = ['A', 'B', 'C'];
+const allArrangements = generatePermutations(tasks);
+console.log(`Total arrangements: ${allArrangements.length}`);
+console.log('All permutations:', allArrangements);
+
+// Example: Traveling salesman (simplified)
+function findOptimalRoute(cities, distances) {
+    const routes = generatePermutations(cities);
+    let minDistance = Infinity;
+    let bestRoute = null;
+    
+    for (let i = 0; i < routes.length; i++) {
+        const route = routes[i];
+        let totalDistance = 0;
+        
+        for (let j = 0; j < route.length - 1; j++) {
+            const from = route[j];
+            const to = route[j + 1];
+            totalDistance += distances[from][to];
+        }
+        
+        if (totalDistance < minDistance) {
+            minDistance = totalDistance;
+            bestRoute = route;
+        }
+    }
+    
+    return { route: bestRoute, distance: minDistance };
+}
+
+const cityDistances = {
+    'A': { 'B': 10, 'C': 15, 'D': 20 },
+    'B': { 'A': 10, 'C': 35, 'D': 25 },
+    'C': { 'A': 15, 'B': 35, 'D': 30 },
+    'D': { 'A': 20, 'B': 25, 'C': 30 }
+};
+
+const optimal = findOptimalRoute(['A', 'B', 'C', 'D'], cityDistances);
+console.log('Optimal route:', optimal);
