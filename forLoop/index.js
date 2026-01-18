@@ -353,3 +353,35 @@ for (let i = 0; i < numbers.length; i++) {
   }
 }
 
+
+
+
+// Create a complete multiplication table (1-12)
+function generateMultiplicationGrid(size = 12) {
+    const grid = [];
+    
+    for (let row = 1; row <= size; row++) {
+        const rowData = [];
+        for (let col = 1; col <= size; col++) {
+            rowData.push({
+                expression: `${row} × ${col}`,
+                result: row * col
+            });
+        }
+        grid.push(rowData);
+    }
+    
+    // Display formatted table
+    console.log("Multiplication Table:");
+    for (let i = 0; i < grid.length; i++) {
+        let rowStr = `${i + 1}: `;
+        for (let j = 0; j < grid[i].length; j++) {
+            rowStr += `${grid[i][j].result}`.padStart(4, ' ');
+        }
+        console.log(rowStr);
+    }
+    
+    return grid;
+}
+
+generateMultiplicationGrid(10);
