@@ -562,3 +562,253 @@ const cityDistances = {
 
 const optimal = findOptimalRoute(['A', 'B', 'C', 'D'], cityDistances);
 console.log('Optimal route:', optimal);
+
+
+
+
+
+// Advanced text search with fuzzy matching and context extraction
+function advancedTextSearch(text, searchTerms, options = {}) {
+    const {
+        caseSensitive = false,
+        fuzzyMatch = true,
+        contextLength = 50,
+        highlightResults = true,
+        maxResults = 10
+    } = options;
+    
+    const results = [];
+    const processedText = caseSensitive ? text : text.toLowerCase();
+    
+    // Process each search term
+    for (let termIdx = 0; termIdx < searchTerms.length; termIdx++) {
+        const term = caseSensitive ? searchTerms[termIdx] : searchTerms[termIdx].toLowerCase();
+        const matches = [];
+        
+        // Find all occurrences
+        for (let i = 0; i < processedText.length; i++) {
+            let matchFound = false;
+            let matchLength = 0;
+            
+            // Exact match
+            if (processedText.substring(i, i + term.length) === term) {
+                matchFound = true;
+                matchLength = term.length;
+            }
+            // Fuzzy match (allow 1 character difference)
+            else if (fuzzyMatch && term.length > 3) {
+                let differences = 0;
+                let possibleMatch = true;
+                
+                for (let j = 0; j < term.length && i + j < processedText.length; j++) {
+                    if (processedText[i + j] !== term[j]) {
+                        differences++;
+                        if (differences > 1) {
+                            possibleMatch = false;
+                            break;
+                        }
+                    }
+                }
+                
+                if (possibleMatch && differences <= 1) {
+                    matchFound = true;
+                    matchLength = term.length;
+                }
+            }
+            
+            if (matchFound) {
+                // Extract context
+                const start = Math.max(0, i - contextLength);
+                const end = Math.min(text.length, i + matchLength + contextLength);
+                
+                const beforeContext = text.substring(start, i);
+                const matchText = text.substring(i, i + matchLength);
+                const afterContext = text.substring(i + matchLength, end);
+                
+                matches.push({
+                    position: i,
+                    matchText: matchText,
+                    context: {
+                        before: beforeContext,
+                        match: matchText,
+                        after: afterContext,
+                        full: highlightResults 
+                            ? `...${beforeContext}**${matchText}**${afterContext}...`
+                            : `...${beforeContext}${matchText}${afterContext}...`
+                    }
+                });
+                
+                // Skip past this match
+                i += matchLength - 1;
+                
+                if (matches.length >= maxResults) break;
+            }
+        }
+        
+        if (matches.length > 0) {
+            results.push({
+                term: searchTerms[termIdx],
+                matchCount: matches.length,
+                matches: matches
+            });
+        }
+    }
+    
+    return results;
+}
+
+// Advanced use case: Building a search index
+function buildSearchIndex(documents) {
+    const index = {};
+    
+    for (let docIdx = 0; docIdx < documents.length; docIdx++) {
+        const doc = documents[docIdx];
+        const words = doc.content.toLowerCase().split(/\W+/);
+        
+        for (let wordIdx = 0; wordIdx < words.length; wordIdx++) {
+            const word = words[wordIdx];
+            
+            if (word.length < 3) continue; // Skip short words
+            
+            if (!index[word]) {
+                index[word] = {
+                    word: word,
+                    documents: [],
+                    totalOccurrences: 0
+                };
+            }
+            
+            // Check if this document is already tracked
+            let docEntry = null;
+            for (let i = 0; i < index[word].documents.length; i++) {
+                if (index[word].documents[i].id === doc.id) {
+                    docEntry = index[word].documents[i];
+                    break;
+                }
+            }
+            
+            if (!docEntry) {
+                docEntry = {
+                    id: doc.id,
+                    title: doc.title,
+                    positions: [],
+                    frequency: 0
+                };
+                index[word].documents.push(docEntry);
+            }
+            
+            docEntry.positions.push(wordIdx);
+            docEntry.frequency++;
+            index[word].totalOccurrences++;
+        }
+    }
+    
+    return index;
+}
+
+// Ranked search with TF-IDF scoring
+function rankedSearch(index, query, documents) {
+    const queryTerms = query.toLowerCase().split(/\W+/);
+    const scores = {};
+    const numDocuments = documents.length;
+    
+    // Calculate scores for each document
+    for (let termIdx = 0; termIdx < queryTerms.length; termIdx++) {
+        const term = queryTerms[termIdx];
+        
+        if (!index[term]) continue;
+        
+        const docsWithTerm = index[term].documents.length;
+        const idf = Math.log(numDocuments / docsWithTerm);
+        
+        for (let docIdx = 0; docIdx < index[term].documents.length; docIdx++) {
+            const docInfo = index[term].documents[docIdx];
+            const tf = docInfo.frequency;
+            const tfidf = tf * idf;
+            
+            if (!scores[docInfo.id]) {
+                scores[docInfo.id] = {
+                    id: docInfo.id,
+                    title: docInfo.title,
+                    score: 0,
+                    matchedTerms: []
+                };
+            }
+            
+            scores[docInfo.id].score += tfidf;
+            scores[docInfo.id].matchedTerms.push(term);
+        }
+    }
+    
+    // Convert to array and sort by score
+    const results = [];
+    for (let docId in scores) {
+        results.push(scores[docId]);
+    }
+    
+    // Sort by score descending
+    for (let i = 0; i < results.length; i++) {
+        for (let j = i + 1; j < results.length; j++) {
+            if (results[j].score > results[i].score) {
+                [results[i], results[j]] = [results[j], results[i]];
+            }
+        }
+    }
+    
+    return results;
+}
+
+// Example usage
+const article = `
+Machine learning is a subset of artificial intelligence that focuses on 
+developing algorithms that can learn from and make predictions based on data. 
+Deep learning, a specialized form of machine learning, uses neural networks 
+with multiple layers to process complex patterns in large datasets.
+`;
+
+const searchResults = advancedTextSearch(
+    article, 
+    ['learning', 'algoritms', 'neural'], // Note: 'algoritms' is misspelled
+    { 
+        fuzzyMatch: true, 
+        contextLength: 30,
+        highlightResults: true 
+    }
+);
+
+console.log('Search Results:');
+searchResults.forEach(result => {
+    console.log(`\nTerm: "${result.term}" (${result.matchCount} matches)`);
+    result.matches.forEach((match, idx) => {
+        console.log(`  ${idx + 1}. ${match.context.full}`);
+    });
+});
+
+// Example: Building and searching an index
+const documents = [
+    {
+        id: 1,
+        title: "Introduction to JavaScript",
+        content: "JavaScript is a versatile programming language used for web development."
+    },
+    {
+        id: 2,
+        title: "Python for Data Science",
+        content: "Python is popular for data science and machine learning applications."
+    },
+    {
+        id: 3,
+        title: "Web Development Basics",
+        content: "Web development involves JavaScript, HTML, CSS, and various frameworks."
+    }
+];
+
+const searchIndex = buildSearchIndex(documents);
+console.log('\nSearch Index built with', Object.keys(searchIndex).length, 'unique words');
+
+const ranked = rankedSearch(searchIndex, "JavaScript web development", documents);
+console.log('\nRanked Search Results:');
+ranked.forEach((result, idx) => {
+    console.log(`${idx + 1}. ${result.title} (Score: ${result.score.toFixed(2)})`);
+    console.log(`   Matched terms: ${result.matchedTerms.join(', ')}`);
+});
