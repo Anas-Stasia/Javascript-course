@@ -385,3 +385,47 @@ function generateMultiplicationGrid(size = 12) {
 }
 
 generateMultiplicationGrid(10);
+
+
+
+// Breadth-First Search to find shortest path in a graph
+function findShortestPath(graph, start, end) {
+    const queue = [[start]];
+    const visited = new Set([start]);
+    
+    while (queue.length > 0) {
+        const path = queue.shift();
+        const node = path[path.length - 1];
+        
+        if (node === end) {
+            return path;
+        }
+        
+        // Explore neighbors
+        for (let i = 0; i < graph[node].length; i++) {
+            const neighbor = graph[node][i];
+            
+            if (!visited.has(neighbor)) {
+                visited.add(neighbor);
+                const newPath = [...path, neighbor];
+                queue.push(newPath);
+            }
+        }
+    }
+    
+    return null; // No path found
+}
+
+// Example: Social network connections
+const socialNetwork = {
+    'Alice': ['Bob', 'Charlie'],
+    'Bob': ['Alice', 'David', 'Emma'],
+    'Charlie': ['Alice', 'Emma'],
+    'David': ['Bob', 'Frank'],
+    'Emma': ['Bob', 'Charlie', 'Frank'],
+    'Frank': ['David', 'Emma']
+};
+
+const path = findShortestPath(socialNetwork, 'Alice', 'Frank');
+console.log(`Shortest path: ${path.join(' → ')}`);
+// Output: Alice → Bob → David → Frank
