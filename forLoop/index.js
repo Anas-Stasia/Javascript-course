@@ -3,7 +3,7 @@ for(let rep = 1; rep <=30; rep++){
     console.log(`Class time is now ${rep}`)
 }
 
-
+const types = [];
 const anasArray = [
     'Anas',
     'Mirabel',
@@ -14,8 +14,20 @@ const anasArray = [
 
 for(let i = 0; i < anasArray.length; i++){
     console.log(anasArray[i], typeof anasArray[i])
+
+    // types[i] = typeof anasArray[i];
+    types.push(types)
 }
 
+console.log(types);
+
+const years = [1991, 2007, 1969, 2020];
+const ages = []
+
+for (let i = 0; i < years.length; i++){
+    ages.push(2037 - years[i])
+}
+console.log(ages)
 
 
 
