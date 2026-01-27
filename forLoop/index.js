@@ -12,8 +12,8 @@ const anasArray = [
     
 ]
 
-for(let i = 0; i < 5; i++){
-    console.log(anasArray[i])
+for(let i = 0; i < anasArray.length; i++){
+    console.log(anasArray[i], typeof anasArray[i])
 }
 
 
