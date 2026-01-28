@@ -815,57 +815,57 @@ function rankedSearch(index, query, documents) {
     return results;
 }
 
-// // Example usage
-// const article = `
-// Machine learning is a subset of artificial intelligence that focuses on 
-// developing algorithms that can learn from and make predictions based on data. 
-// Deep learning, a specialized form of machine learning, uses neural networks 
-// with multiple layers to process complex patterns in large datasets.
-// `;
+// Example usage
+const article = `
+Machine learning is a subset of artificial intelligence that focuses on 
+developing algorithms that can learn from and make predictions based on data. 
+Deep learning, a specialized form of machine learning, uses neural networks 
+with multiple layers to process complex patterns in large datasets.
+`;
 
-// const searchResults = advancedTextSearch(
-//     article, 
-//     ['learning', 'algoritms', 'neural'], // Note: 'algoritms' is misspelled
-//     { 
-//         fuzzyMatch: true, 
-//         contextLength: 30,
-//         highlightResults: true 
-//     }
-// );
+const searchResults = advancedTextSearch(
+    article, 
+    ['learning', 'algoritms', 'neural'], // Note: 'algoritms' is misspelled
+    { 
+        fuzzyMatch: true, 
+        contextLength: 30,
+        highlightResults: true 
+    }
+);
 
-// console.log('Search Results:');
-// searchResults.forEach(result => {
-//     console.log(`\nTerm: "${result.term}" (${result.matchCount} matches)`);
-//     result.matches.forEach((match, idx) => {
-//         console.log(`  ${idx + 1}. ${match.context.full}`);
-//     });
-// });
+console.log('Search Results:');
+searchResults.forEach(result => {
+    console.log(`\nTerm: "${result.term}" (${result.matchCount} matches)`);
+    result.matches.forEach((match, idx) => {
+        console.log(`  ${idx + 1}. ${match.context.full}`);
+    });
+});
 
-// // Example: Building and searching an index
-// const documents = [
-//     {
-//         id: 1,
-//         title: "Introduction to JavaScript",
-//         content: "JavaScript is a versatile programming language used for web development."
-//     },
-//     {
-//         id: 2,
-//         title: "Python for Data Science",
-//         content: "Python is popular for data science and machine learning applications."
-//     },
-//     {
-//         id: 3,
-//         title: "Web Development Basics",
-//         content: "Web development involves JavaScript, HTML, CSS, and various frameworks."
-//     }
-// ];
+// Example: Building and searching an index
+const documents = [
+    {
+        id: 1,
+        title: "Introduction to JavaScript",
+        content: "JavaScript is a versatile programming language used for web development."
+    },
+    {
+        id: 2,
+        title: "Python for Data Science",
+        content: "Python is popular for data science and machine learning applications."
+    },
+    {
+        id: 3,
+        title: "Web Development Basics",
+        content: "Web development involves JavaScript, HTML, CSS, and various frameworks."
+    }
+];
 
-// const searchIndex = buildSearchIndex(documents);
-// console.log('\nSearch Index built with', Object.keys(searchIndex).length, 'unique words');
+const searchIndex = buildSearchIndex(documents);
+console.log('\nSearch Index built with', Object.keys(searchIndex).length, 'unique words');
 
-// const ranked = rankedSearch(searchIndex, "JavaScript web development", documents);
-// console.log('\nRanked Search Results:');
-// ranked.forEach((result, idx) => {
-//     console.log(`${idx + 1}. ${result.title} (Score: ${result.score.toFixed(2)})`);
-//     console.log(`   Matched terms: ${result.matchedTerms.join(', ')}`);
-// });
+const ranked = rankedSearch(searchIndex, "JavaScript web development", documents);
+console.log('\nRanked Search Results:');
+ranked.forEach((result, idx) => {
+    console.log(`${idx + 1}. ${result.title} (Score: ${result.score.toFixed(2)})`);
+    console.log(`   Matched terms: ${result.matchedTerms.join(', ')}`);
+});
