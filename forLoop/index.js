@@ -579,36 +579,36 @@ function permuteIterative(arr) {
     return result;
 }
 
-// // Practical use: Find best arrangement
-// const tasks = ['A', 'B', 'C'];
-// const allArrangements = generatePermutations(tasks);
-// console.log(`Total arrangements: ${allArrangements.length}`);
-// console.log('All permutations:', allArrangements);
+// Practical use: Find best arrangement
+const tasks = ['A', 'B', 'C'];
+const allArrangements = generatePermutations(tasks);
+console.log(`Total arrangements: ${allArrangements.length}`);
+console.log('All permutations:', allArrangements);
 
-// // Example: Traveling salesman (simplified)
-// function findOptimalRoute(cities, distances) {
-//     const routes = generatePermutations(cities);
-//     let minDistance = Infinity;
-//     let bestRoute = null;
+// Example: Traveling salesman (simplified)
+function findOptimalRoute(cities, distances) {
+    const routes = generatePermutations(cities);
+    let minDistance = Infinity;
+    let bestRoute = null;
     
-//     for (let i = 0; i < routes.length; i++) {
-//         const route = routes[i];
-//         let totalDistance = 0;
+    for (let i = 0; i < routes.length; i++) {
+        const route = routes[i];
+        let totalDistance = 0;
         
-//         for (let j = 0; j < route.length - 1; j++) {
-//             const from = route[j];
-//             const to = route[j + 1];
-//             totalDistance += distances[from][to];
-//         }
+        for (let j = 0; j < route.length - 1; j++) {
+            const from = route[j];
+            const to = route[j + 1];
+            totalDistance += distances[from][to];
+        }
         
-//         if (totalDistance < minDistance) {
-//             minDistance = totalDistance;
-//             bestRoute = route;
-//         }
-//     }
+        if (totalDistance < minDistance) {
+            minDistance = totalDistance;
+            bestRoute = route;
+        }
+    }
     
-//     return { route: bestRoute, distance: minDistance };
-// }
+    return { route: bestRoute, distance: minDistance };
+}
 
 // const cityDistances = {
 //     'A': { 'B': 10, 'C': 15, 'D': 20 },
