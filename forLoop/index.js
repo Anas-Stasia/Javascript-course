@@ -624,95 +624,95 @@ function findOptimalRoute(cities, distances) {
 
 
 
-// // Advanced text search with fuzzy matching and context extraction
-// function advancedTextSearch(text, searchTerms, options = {}) {
-//     const {
-//         caseSensitive = false,
-//         fuzzyMatch = true,
-//         contextLength = 50,
-//         highlightResults = true,
-//         maxResults = 10
-//     } = options;
+// Advanced text search with fuzzy matching and context extraction
+function advancedTextSearch(text, searchTerms, options = {}) {
+    const {
+        caseSensitive = false,
+        fuzzyMatch = true,
+        contextLength = 50,
+        highlightResults = true,
+        maxResults = 10
+    } = options;
     
-//     const results = [];
-//     const processedText = caseSensitive ? text : text.toLowerCase();
+    const results = [];
+    const processedText = caseSensitive ? text : text.toLowerCase();
     
-//     // Process each search term
-//     for (let termIdx = 0; termIdx < searchTerms.length; termIdx++) {
-//         const term = caseSensitive ? searchTerms[termIdx] : searchTerms[termIdx].toLowerCase();
-//         const matches = [];
+    // Process each search term
+    for (let termIdx = 0; termIdx < searchTerms.length; termIdx++) {
+        const term = caseSensitive ? searchTerms[termIdx] : searchTerms[termIdx].toLowerCase();
+        const matches = [];
         
-//         // Find all occurrences
-//         for (let i = 0; i < processedText.length; i++) {
-//             let matchFound = false;
-//             let matchLength = 0;
+        // Find all occurrences
+        for (let i = 0; i < processedText.length; i++) {
+            let matchFound = false;
+            let matchLength = 0;
             
-//             // Exact match
-//             if (processedText.substring(i, i + term.length) === term) {
-//                 matchFound = true;
-//                 matchLength = term.length;
-//             }
-//             // Fuzzy match (allow 1 character difference)
-//             else if (fuzzyMatch && term.length > 3) {
-//                 let differences = 0;
-//                 let possibleMatch = true;
+            // Exact match
+            if (processedText.substring(i, i + term.length) === term) {
+                matchFound = true;
+                matchLength = term.length;
+            }
+            // Fuzzy match (allow 1 character difference)
+            else if (fuzzyMatch && term.length > 3) {
+                let differences = 0;
+                let possibleMatch = true;
                 
-//                 for (let j = 0; j < term.length && i + j < processedText.length; j++) {
-//                     if (processedText[i + j] !== term[j]) {
-//                         differences++;
-//                         if (differences > 1) {
-//                             possibleMatch = false;
-//                             break;
-//                         }
-//                     }
-//                 }
+                for (let j = 0; j < term.length && i + j < processedText.length; j++) {
+                    if (processedText[i + j] !== term[j]) {
+                        differences++;
+                        if (differences > 1) {
+                            possibleMatch = false;
+                            break;
+                        }
+                    }
+                }
                 
-//                 if (possibleMatch && differences <= 1) {
-//                     matchFound = true;
-//                     matchLength = term.length;
-//                 }
-//             }
+                if (possibleMatch && differences <= 1) {
+                    matchFound = true;
+                    matchLength = term.length;
+                }
+            }
             
-//             if (matchFound) {
-//                 // Extract context
-//                 const start = Math.max(0, i - contextLength);
-//                 const end = Math.min(text.length, i + matchLength + contextLength);
+            if (matchFound) {
+                // Extract context
+                const start = Math.max(0, i - contextLength);
+                const end = Math.min(text.length, i + matchLength + contextLength);
                 
-//                 const beforeContext = text.substring(start, i);
-//                 const matchText = text.substring(i, i + matchLength);
-//                 const afterContext = text.substring(i + matchLength, end);
+                const beforeContext = text.substring(start, i);
+                const matchText = text.substring(i, i + matchLength);
+                const afterContext = text.substring(i + matchLength, end);
                 
-//                 matches.push({
-//                     position: i,
-//                     matchText: matchText,
-//                     context: {
-//                         before: beforeContext,
-//                         match: matchText,
-//                         after: afterContext,
-//                         full: highlightResults 
-//                             ? `...${beforeContext}**${matchText}**${afterContext}...`
-//                             : `...${beforeContext}${matchText}${afterContext}...`
-//                     }
-//                 });
+                matches.push({
+                    position: i,
+                    matchText: matchText,
+                    context: {
+                        before: beforeContext,
+                        match: matchText,
+                        after: afterContext,
+                        full: highlightResults 
+                            ? `...${beforeContext}**${matchText}**${afterContext}...`
+                            : `...${beforeContext}${matchText}${afterContext}...`
+                    }
+                });
                 
-//                 // Skip past this match
-//                 i += matchLength - 1;
+                // Skip past this match
+                i += matchLength - 1;
                 
-//                 if (matches.length >= maxResults) break;
-//             }
-//         }
+                if (matches.length >= maxResults) break;
+            }
+        }
         
-//         if (matches.length > 0) {
-//             results.push({
-//                 term: searchTerms[termIdx],
-//                 matchCount: matches.length,
-//                 matches: matches
-//             });
-//         }
-//     }
+        if (matches.length > 0) {
+            results.push({
+                term: searchTerms[termIdx],
+                matchCount: matches.length,
+                matches: matches
+            });
+        }
+    }
     
-//     return results;
-// }
+    return results;
+}
 
 // // Advanced use case: Building a search index
 // function buildSearchIndex(documents) {
