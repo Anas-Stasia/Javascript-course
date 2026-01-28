@@ -714,54 +714,54 @@ function advancedTextSearch(text, searchTerms, options = {}) {
     return results;
 }
 
-// // Advanced use case: Building a search index
-// function buildSearchIndex(documents) {
-//     const index = {};
+// Advanced use case: Building a search index
+function buildSearchIndex(documents) {
+    const index = {};
     
-//     for (let docIdx = 0; docIdx < documents.length; docIdx++) {
-//         const doc = documents[docIdx];
-//         const words = doc.content.toLowerCase().split(/\W+/);
+    for (let docIdx = 0; docIdx < documents.length; docIdx++) {
+        const doc = documents[docIdx];
+        const words = doc.content.toLowerCase().split(/\W+/);
         
-//         for (let wordIdx = 0; wordIdx < words.length; wordIdx++) {
-//             const word = words[wordIdx];
+        for (let wordIdx = 0; wordIdx < words.length; wordIdx++) {
+            const word = words[wordIdx];
             
-//             if (word.length < 3) continue; // Skip short words
+            if (word.length < 3) continue; // Skip short words
             
-//             if (!index[word]) {
-//                 index[word] = {
-//                     word: word,
-//                     documents: [],
-//                     totalOccurrences: 0
-//                 };
-//             }
+            if (!index[word]) {
+                index[word] = {
+                    word: word,
+                    documents: [],
+                    totalOccurrences: 0
+                };
+            }
             
-//             // Check if this document is already tracked
-//             let docEntry = null;
-//             for (let i = 0; i < index[word].documents.length; i++) {
-//                 if (index[word].documents[i].id === doc.id) {
-//                     docEntry = index[word].documents[i];
-//                     break;
-//                 }
-//             }
+            // Check if this document is already tracked
+            let docEntry = null;
+            for (let i = 0; i < index[word].documents.length; i++) {
+                if (index[word].documents[i].id === doc.id) {
+                    docEntry = index[word].documents[i];
+                    break;
+                }
+            }
             
-//             if (!docEntry) {
-//                 docEntry = {
-//                     id: doc.id,
-//                     title: doc.title,
-//                     positions: [],
-//                     frequency: 0
-//                 };
-//                 index[word].documents.push(docEntry);
-//             }
+            if (!docEntry) {
+                docEntry = {
+                    id: doc.id,
+                    title: doc.title,
+                    positions: [],
+                    frequency: 0
+                };
+                index[word].documents.push(docEntry);
+            }
             
-//             docEntry.positions.push(wordIdx);
-//             docEntry.frequency++;
-//             index[word].totalOccurrences++;
-//         }
-//     }
+            docEntry.positions.push(wordIdx);
+            docEntry.frequency++;
+            index[word].totalOccurrences++;
+        }
+    }
     
-//     return index;
-// }
+    return index;
+}
 
 // // Ranked search with TF-IDF scoring
 // function rankedSearch(index, query, documents) {
