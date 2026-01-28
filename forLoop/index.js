@@ -536,48 +536,48 @@ console.log("Fibonacci under 1000:", fibonacciUnderLimit(1000));
 
 
 
-// // Generate all permutations of an array
-// function generatePermutations(arr) {
-//     const results = [];
+// Generate all permutations of an array
+function generatePermutations(arr) {
+    const results = [];
     
-//     function permute(current, remaining) {
-//         if (remaining.length === 0) {
-//             results.push([...current]);
-//             return;
-//         }
+    function permute(current, remaining) {
+        if (remaining.length === 0) {
+            results.push([...current]);
+            return;
+        }
         
-//         for (let i = 0; i < remaining.length; i++) {
-//             const newCurrent = [...current, remaining[i]];
-//             const newRemaining = [...remaining.slice(0, i), ...remaining.slice(i + 1)];
-//             permute(newCurrent, newRemaining);
-//         }
-//     }
+        for (let i = 0; i < remaining.length; i++) {
+            const newCurrent = [...current, remaining[i]];
+            const newRemaining = [...remaining.slice(0, i), ...remaining.slice(i + 1)];
+            permute(newCurrent, newRemaining);
+        }
+    }
     
-//     permute([], arr);
-//     return results;
-// }
+    permute([], arr);
+    return results;
+}
 
-// // Iterative approach for better performance
-// function permuteIterative(arr) {
-//     const result = [arr.slice()];
-//     const c = new Array(arr.length).fill(0);
-//     let i = 1;
+// Iterative approach for better performance
+function permuteIterative(arr) {
+    const result = [arr.slice()];
+    const c = new Array(arr.length).fill(0);
+    let i = 1;
     
-//     while (i < arr.length) {
-//         if (c[i] < i) {
-//             const swapIdx = i % 2 === 0 ? 0 : c[i];
-//             [arr[swapIdx], arr[i]] = [arr[i], arr[swapIdx]];
-//             result.push(arr.slice());
-//             c[i]++;
-//             i = 1;
-//         } else {
-//             c[i] = 0;
-//             i++;
-//         }
-//     }
+    while (i < arr.length) {
+        if (c[i] < i) {
+            const swapIdx = i % 2 === 0 ? 0 : c[i];
+            [arr[swapIdx], arr[i]] = [arr[i], arr[swapIdx]];
+            result.push(arr.slice());
+            c[i]++;
+            i = 1;
+        } else {
+            c[i] = 0;
+            i++;
+        }
+    }
     
-//     return result;
-// }
+    return result;
+}
 
 // // Practical use: Find best arrangement
 // const tasks = ['A', 'B', 'C'];
