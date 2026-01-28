@@ -513,24 +513,24 @@ function fibonacciSequence(n) {
     };
 }
 
-// // Advanced: Find Fibonacci numbers under a limit
-// function fibonacciUnderLimit(limit) {
-//     const result = [];
-//     let a = 0, b = 1;
+// Advanced: Find Fibonacci numbers under a limit
+function fibonacciUnderLimit(limit) {
+    const result = [];
+    let a = 0, b = 1;
     
-//     for (let current = a; current < limit; ) {
-//         result.push(current);
-//         const next = a + b;
-//         a = b;
-//         b = next;
-//         current = a;
-//     }
+    for (let current = a; current < limit; ) {
+        result.push(current);
+        const next = a + b;
+        a = b;
+        b = next;
+        current = a;
+    }
     
-//     return result;
-// }
+    return result;
+}
 
-// console.log(fibonacciSequence(10));
-// console.log("Fibonacci under 1000:", fibonacciUnderLimit(1000));
+console.log(fibonacciSequence(10));
+console.log("Fibonacci under 1000:", fibonacciUnderLimit(1000));
 
 
 
