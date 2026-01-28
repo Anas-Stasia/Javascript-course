@@ -763,57 +763,57 @@ function buildSearchIndex(documents) {
     return index;
 }
 
-// // Ranked search with TF-IDF scoring
-// function rankedSearch(index, query, documents) {
-//     const queryTerms = query.toLowerCase().split(/\W+/);
-//     const scores = {};
-//     const numDocuments = documents.length;
+// Ranked search with TF-IDF scoring
+function rankedSearch(index, query, documents) {
+    const queryTerms = query.toLowerCase().split(/\W+/);
+    const scores = {};
+    const numDocuments = documents.length;
     
-//     // Calculate scores for each document
-//     for (let termIdx = 0; termIdx < queryTerms.length; termIdx++) {
-//         const term = queryTerms[termIdx];
+    // Calculate scores for each document
+    for (let termIdx = 0; termIdx < queryTerms.length; termIdx++) {
+        const term = queryTerms[termIdx];
         
-//         if (!index[term]) continue;
+        if (!index[term]) continue;
         
-//         const docsWithTerm = index[term].documents.length;
-//         const idf = Math.log(numDocuments / docsWithTerm);
+        const docsWithTerm = index[term].documents.length;
+        const idf = Math.log(numDocuments / docsWithTerm);
         
-//         for (let docIdx = 0; docIdx < index[term].documents.length; docIdx++) {
-//             const docInfo = index[term].documents[docIdx];
-//             const tf = docInfo.frequency;
-//             const tfidf = tf * idf;
+        for (let docIdx = 0; docIdx < index[term].documents.length; docIdx++) {
+            const docInfo = index[term].documents[docIdx];
+            const tf = docInfo.frequency;
+            const tfidf = tf * idf;
             
-//             if (!scores[docInfo.id]) {
-//                 scores[docInfo.id] = {
-//                     id: docInfo.id,
-//                     title: docInfo.title,
-//                     score: 0,
-//                     matchedTerms: []
-//                 };
-//             }
+            if (!scores[docInfo.id]) {
+                scores[docInfo.id] = {
+                    id: docInfo.id,
+                    title: docInfo.title,
+                    score: 0,
+                    matchedTerms: []
+                };
+            }
             
-//             scores[docInfo.id].score += tfidf;
-//             scores[docInfo.id].matchedTerms.push(term);
-//         }
-//     }
+            scores[docInfo.id].score += tfidf;
+            scores[docInfo.id].matchedTerms.push(term);
+        }
+    }
     
-//     // Convert to array and sort by score
-//     const results = [];
-//     for (let docId in scores) {
-//         results.push(scores[docId]);
-//     }
+    // Convert to array and sort by score
+    const results = [];
+    for (let docId in scores) {
+        results.push(scores[docId]);
+    }
     
-//     // Sort by score descending
-//     for (let i = 0; i < results.length; i++) {
-//         for (let j = i + 1; j < results.length; j++) {
-//             if (results[j].score > results[i].score) {
-//                 [results[i], results[j]] = [results[j], results[i]];
-//             }
-//         }
-//     }
+    // Sort by score descending
+    for (let i = 0; i < results.length; i++) {
+        for (let j = i + 1; j < results.length; j++) {
+            if (results[j].score > results[i].score) {
+                [results[i], results[j]] = [results[j], results[i]];
+            }
+        }
+    }
     
-//     return results;
-// }
+    return results;
+}
 
 // // Example usage
 // const article = `
