@@ -68,3 +68,28 @@ while (counter > 0) {
     counter--;
 }
 console.log(`${n}! = ${factorial}`); // Output: 6! = 720
+
+
+// Remove all spaces from a string
+let text = "Hello World From JavaScript";
+let result = "";
+let i = 0;
+
+while (i < text.length) {
+    if (text[i] !== " ") {
+        result += text[i];
+    }
+    i++;
+}
+console.log(result); // Output: HelloWorldFromJavaScript
+
+// Reverse a string
+let str = "JavaScript";
+let reversed = "";
+let j = str.length - 1;
+
+while (j >= 0) {
+    reversed += str[j];
+    j--;
+}
+console.log(reversed); // Output: tpircSavaJ
