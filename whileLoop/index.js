@@ -27,3 +27,24 @@ while (num % 7 !== 0 || num === 0) {
     num = Math.floor(Math.random() * 100) + 1;
 }
 console.log(`Found number divisible by 7: ${num}`);
+
+
+
+// Simple number guessing game
+let gameRunning = true;
+let targetNumber = Math.floor(Math.random() * 10) + 1;
+let attempts = 0;
+
+while (gameRunning) {
+    let guess = parseInt(prompt("Guess a number between 1 and 10:"));
+    attempts++;
+    
+    if (guess === targetNumber) {
+        alert(`Correct! You won in ${attempts} attempts!`);
+        gameRunning = false;
+    } else if (guess < targetNumber) {
+        alert("Too low! Try again.");
+    } else {
+        alert("Too high! Try again.");
+    }
+}
