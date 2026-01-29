@@ -48,3 +48,23 @@ while (gameRunning) {
         alert("Too high! Try again.");
     }
 }
+
+
+// Countdown timer
+let countdown = 5;
+while (countdown > 0) {
+    console.log(countdown);
+    countdown--;
+}
+console.log("Lift off!");
+
+// Calculate factorial
+let n = 6;
+let factorial = 1;
+let counter = n;
+
+while (counter > 0) {
+    factorial *= counter;
+    counter--;
+}
+console.log(`${n}! = ${factorial}`); // Output: 6! = 720
