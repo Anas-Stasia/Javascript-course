@@ -93,3 +93,19 @@ while (j >= 0) {
     j--;
 }
 console.log(reversed); // Output: tpircSavaJ
+
+
+// Check if a number is prime
+let number = 29;
+let divisor = 2;
+let isPrime = true;
+
+while (divisor <= Math.sqrt(number)) {
+    if (number % divisor === 0) {
+        isPrime = false;
+        break;
+    }
+    divisor++;
+}
+
+console.log(`${number} is ${isPrime ? "prime" : "not prime"}`);
