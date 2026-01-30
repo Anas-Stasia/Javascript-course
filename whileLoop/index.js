@@ -134,3 +134,19 @@ if (found) {
 }
 
 
+
+
+// Generate Fibonacci sequence up to n terms
+let m = 10;
+let count = 0;
+let a = 0, b = 1;
+
+console.log("Fibonacci Sequence:");
+while (count < m) {
+    console.log(a);
+    let temp = a + b;
+    a = b;
+    b = temp;
+    count++;
+}
+// Output: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34
