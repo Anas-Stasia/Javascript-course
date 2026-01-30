@@ -152,17 +152,3 @@ while (count < m) {
 // Output: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34
 
 
-// Check if a number is prime
-let number = 29;
-let divisor = 2;
-let isPrime = true;
-
-while (divisor <= Math.sqrt(number)) {
-    if (number % divisor === 0) {
-        isPrime = false;
-        break;
-    }
-    divisor++;
-}
-
-console.log(`${number} is ${isPrime ? "prime" : "not prime"}`);
