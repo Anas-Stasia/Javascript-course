@@ -109,3 +109,26 @@ while (divisor <= Math.sqrt(number)) {
 }
 
 console.log(`${number} is ${isPrime ? "prime" : "not prime"}`);
+
+
+
+
+// Linear search for an element
+let array = [23, 45, 12, 67, 89, 34, 56];
+let target = 67;
+let index = 0;
+let found = false;
+
+while (index < array.length) {
+    if (array[index] === target) {
+        found = true;
+        break;
+    }
+    index++;
+}
+
+if (found) {
+    console.log(`${target} found at index ${index}`);
+} else {
+    console.log(`${target} not found`);
+}
