@@ -94,3 +94,42 @@ console.log(`Decimal ${decimal} in binary is ${binary}`); // Output: Decimal 43 
 
 // Verify using built-in method
 console.log(`Verification: ${(decimal).toString(2)}`);
+
+
+
+// Simulate retrying a failed API request
+async function fetchData() {
+    let maxRetries = 5;
+    let attempt = 0;
+    let success = false;
+
+    while (attempt < maxRetries && !success) {
+        attempt++;
+        console.log(`Attempt ${attempt} of ${maxRetries}...`);
+
+        try {
+            // Simulating an API call that randomly fails
+            let response = await new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    if (Math.random() > 0.5) {
+                        resolve({ data: "Success! Data fetched." });
+                    } else {
+                        reject(new Error("Request failed."));
+                    }
+                }, 1000);
+            });
+
+            console.log(response.data);
+            success = true;
+        } catch (error) {
+            console.log(`Error: ${error.message}`);
+            if (attempt === maxRetries) {
+                console.log("All retry attempts failed.");
+            } else {
+                console.log("Retrying...");
+            }
+        }
+    }
+}
+
+fetchData();
