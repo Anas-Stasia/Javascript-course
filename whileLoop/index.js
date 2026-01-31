@@ -25,3 +25,16 @@ if (!found) {
 
 
 
+// Find the GCD of two numbers
+let a = 48;
+let b = 18;
+let originalA = a;
+let originalB = b;
+
+while (b !== 0) {
+    let temp = b;
+    b = a % b;
+    a = temp;
+}
+
+console.log(`GCD of ${originalA} and ${originalB} is ${a}`); // Output: GCD of 48 and 18 is 6
