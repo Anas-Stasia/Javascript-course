@@ -38,3 +38,38 @@ while (b !== 0) {
 }
 
 console.log(`GCD of ${originalA} and ${originalB} is ${a}`); // Output: GCD of 48 and 18 is 6
+
+
+
+// Display items in pages
+let items = ["Apple", "Banana", "Cherry", "Mango", "Grape", 
+             "Orange", "Pear", "Peach", "Plum", "Kiwi",
+             "Watermelon", "Pineapple"];
+let pageSize = 3;
+let currentPage = 0;
+let totalPages = Math.ceil(items.length / pageSize);
+let browsing = true;
+
+while (browsing) {
+    let start = currentPage * pageSize;
+    let end = start + pageSize;
+    let pageItems = items.slice(start, end);
+
+    console.log(`\n--- Page ${currentPage + 1} of ${totalPages} ---`);
+    pageItems.forEach((item, index) => {
+        console.log(`${start + index + 1}. ${item}`);
+    });
+
+    let choice = prompt("Enter 'n' for next, 'p' for previous, or 'q' to quit:").toLowerCase();
+
+    if (choice === "n" && currentPage < totalPages - 1) {
+        currentPage++;
+    } else if (choice === "p" && currentPage > 0) {
+        currentPage--;
+    } else if (choice === "q") {
+        browsing = false;
+        console.log("Exited pagination.");
+    } else {
+        console.log("Invalid choice or no more pages.");
+    }
+}
