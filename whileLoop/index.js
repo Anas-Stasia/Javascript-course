@@ -73,3 +73,24 @@ while (browsing) {
         console.log("Invalid choice or no more pages.");
     }
 }
+
+
+// Convert a decimal number to binary
+let decimal = 43;
+let binary = "";
+let num = decimal;
+
+if (num === 0) {
+    binary = "0";
+}
+
+while (num > 0) {
+    let remainder = num % 2;
+    binary = remainder.toString() + binary;
+    num = Math.floor(num / 2);
+}
+
+console.log(`Decimal ${decimal} in binary is ${binary}`); // Output: Decimal 43 in binary is 101011
+
+// Verify using built-in method
+console.log(`Verification: ${(decimal).toString(2)}`);
