@@ -199,3 +199,20 @@ for (let i = 0; i < pixelData.length; i += 3) {
 }
 
 console.log("Grayscale pixel data:", pixelData.slice(0, 12));
+
+
+// Store 3D vertex positions for a triangle
+let vertices = new Float32Array([
+    0.0,  0.5, 0.0,  // Top vertex (x, y, z)
+   -0.5, -0.5, 0.0,  // Bottom-left vertex
+    0.5, -0.5, 0.0   // Bottom-right vertex
+]);
+
+console.log("Triangle vertices:", vertices);
+
+// Calculate centroid (center point)
+let centroidX = (vertices[0] + vertices[3] + vertices[6]) / 3;
+let centroidY = (vertices[1] + vertices[4] + vertices[7]) / 3;
+let centroidZ = (vertices[2] + vertices[5] + vertices[8]) / 3;
+
+console.log(`Centroid: (${centroidX}, ${centroidY}, ${centroidZ})`);
