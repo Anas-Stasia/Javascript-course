@@ -178,3 +178,24 @@ for (let i = 0; i < audioSamples.length; i++) {
 }
 let rms = Math.sqrt(sumSquares / audioSamples.length);
 console.log(`Audio Volume (RMS): ${rms.toFixed(2)}`);
+
+
+// Represent RGB pixels (4x4 image with RGB values)
+let imageWidth = 4;
+let imageHeight = 4;
+let pixelData = new Uint8Array(imageWidth * imageHeight * 3); // RGB
+
+// Fill with red color
+for (let i = 0; i < pixelData.length; i += 3) {
+    pixelData[i] = 255;     // Red
+    pixelData[i + 1] = 0;   // Green
+    pixelData[i + 2] = 0;   // Blue
+}
+
+// Convert to grayscale
+for (let i = 0; i < pixelData.length; i += 3) {
+    let gray = (pixelData[i] + pixelData[i + 1] + pixelData[i + 2]) / 3;
+    pixelData[i] = pixelData[i + 1] = pixelData[i + 2] = gray;
+}
+
+console.log("Grayscale pixel data:", pixelData.slice(0, 12));
