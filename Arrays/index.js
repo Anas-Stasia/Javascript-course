@@ -96,3 +96,18 @@ const tips1 = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[2])];
 const totals = [bills[0] + tips[0], bills[1] + tips[1], bills[2] + tips[2]];
 
 console.log(bills, tips, totals);
+
+
+
+// Store shopping cart items
+let cart = ["Laptop", "Mouse", "Keyboard", "Monitor"];
+
+// Add item
+cart.push("Headphones");
+
+// Remove item
+cart.splice(2, 1); // Remove Keyboard
+
+// Display cart
+console.log("Shopping Cart:", cart);
+console.log("Total items:", cart.length);
