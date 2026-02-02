@@ -111,3 +111,29 @@ cart.splice(2, 1); // Remove Keyboard
 // Display cart
 console.log("Shopping Cart:", cart);
 console.log("Total items:", cart.length);
+
+
+
+// 2D array for game board
+let board = [
+    ["X", "O", "X"],
+    ["O", "X", "O"],
+    ["X", "O", "X"]
+];
+
+// Display board
+for (let i = 0; i < board.length; i++) {
+    console.log(board[i].join(" | "));
+    if (i < board.length - 1) console.log("---------");
+}
+
+// Check winner
+function checkWinner(board) {
+    // Check rows
+    for (let i = 0; i < 3; i++) {
+        if (board[i][0] === board[i][1] && board[i][1] === board[i][2]) {
+            return board[i][0];
+        }
+    }
+    return null;
+}
