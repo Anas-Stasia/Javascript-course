@@ -158,3 +158,23 @@ let topStudent = students.reduce((top, student) =>
     student.grade > top.grade ? student : top
 );
 console.log(`Top Student: ${topStudent.name} with ${topStudent.grade}`);
+
+
+
+// Int16Array for audio samples
+let audioSamples = new Int16Array(8);
+
+// Simulate audio wave data
+for (let i = 0; i < audioSamples.length; i++) {
+    audioSamples[i] = Math.sin(i * Math.PI / 4) * 32767; // 16-bit range
+}
+
+console.log("Audio Samples:", audioSamples);
+
+// Calculate RMS (Root Mean Square) for volume
+let sumSquares = 0;
+for (let i = 0; i < audioSamples.length; i++) {
+    sumSquares += audioSamples[i] * audioSamples[i];
+}
+let rms = Math.sqrt(sumSquares / audioSamples.length);
+console.log(`Audio Volume (RMS): ${rms.toFixed(2)}`);
