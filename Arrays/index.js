@@ -137,3 +137,24 @@ function checkWinner(board) {
     }
     return null;
 }
+
+
+
+// Store student information
+let students = [
+    { id: 1, name: "Alice", grade: 85, subject: "Math" },
+    { id: 2, name: "Bob", grade: 92, subject: "Science" },
+    { id: 3, name: "Charlie", grade: 78, subject: "Math" },
+    { id: 4, name: "Diana", grade: 88, subject: "English" }
+];
+
+// Calculate average grade
+let totalGrade = students.reduce((sum, student) => sum + student.grade, 0);
+let averageGrade = totalGrade / students.length;
+console.log(`Average Grade: ${averageGrade}`);
+
+// Find top student
+let topStudent = students.reduce((top, student) => 
+    student.grade > top.grade ? student : top
+);
+console.log(`Top Student: ${topStudent.name} with ${topStudent.grade}`);
