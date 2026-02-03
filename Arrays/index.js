@@ -238,3 +238,31 @@ seats.forEach((seat, index) => {
 // Count available seats
 let availableSeats = seats.filter(seat => seat === undefined).length;
 console.log(`Available seats: ${availableSeats}`);
+
+
+// Different months have different number of weeks
+let monthlySales = [
+    [1200, 1500, 1300, 1400],           // January (4 weeks)
+    [1600, 1800, 1700, 1900, 2000],     // February (5 weeks)
+    [2100, 2200, 2300, 2400]            // March (4 weeks)
+];
+
+// Calculate total sales per month
+monthlySales.forEach((month, index) => {
+    let total = month.reduce((sum, week) => sum + week, 0);
+    let average = total / month.length;
+    console.log(`Month ${index + 1}: Total = $${total}, Average = $${average.toFixed(2)}`);
+});
+
+// Find best week overall
+let bestWeek = 0;
+let bestMonth = 0;
+monthlySales.forEach((month, i) => {
+    month.forEach((week, j) => {
+        if (week > monthlySales[bestMonth][bestWeek]) {
+            bestMonth = i;
+            bestWeek = j;
+        }
+    });
+});
+console.log(`Best week: Month ${bestMonth + 1}, Week ${bestWeek + 1}`);
