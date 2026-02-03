@@ -216,3 +216,25 @@ let centroidY = (vertices[1] + vertices[4] + vertices[7]) / 3;
 let centroidZ = (vertices[2] + vertices[5] + vertices[8]) / 3;
 
 console.log(`Centroid: (${centroidX}, ${centroidY}, ${centroidZ})`);
+
+
+
+// Array with empty slots for available seats
+let seats = new Array(20);
+
+// Reserve specific seats
+seats[5] = { name: "John", seatNumber: 5 };
+seats[12] = { name: "Emma", seatNumber: 12 };
+seats[18] = { name: "Mike", seatNumber: 18 };
+
+// Check available seats
+console.log("Reserved seats:");
+seats.forEach((seat, index) => {
+    if (seat) {
+        console.log(`Seat ${index}: Reserved by ${seat.name}`);
+    }
+});
+
+// Count available seats
+let availableSeats = seats.filter(seat => seat === undefined).length;
+console.log(`Available seats: ${availableSeats}`);
