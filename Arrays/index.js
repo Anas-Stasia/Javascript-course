@@ -297,3 +297,37 @@ completeTask(3);
 let taskSummaries = tasks.map(t => `[${t.completed ? "✓" : " "}] ${t.task} (${t.priority})`);
 console.log("\nAll tasks:");
 taskSummaries.forEach(summary => console.log(summary));
+
+
+// Simulate a network packet (header + data)
+let buffer = new ArrayBuffer(16);
+let view = new DataView(buffer);
+
+// Write packet header
+view.setUint8(0, 1);        // Version
+view.setUint8(1, 2);        // Type
+view.setUint16(2, 1024);    // Length (2 bytes)
+view.setUint32(4, 192 * 256**3 + 168 * 256**2 + 1 * 256 + 100); // IP address
+
+// Write timestamp (8 bytes at offset 8)
+view.setBigUint64(8, BigInt(Date.now()));
+
+// Read packet header
+console.log("Packet Header:");
+console.log("Version:", view.getUint8(0));
+console.log("Type:", view.getUint8(1));
+console.log("Length:", view.getUint16(2));
+
+// Decode IP address
+let ip = view.getUint32(4);
+let ipString = [
+    (ip >> 24) & 0xFF,
+    (ip >> 16) & 0xFF,
+    (ip >> 8) & 0xFF,
+    ip & 0xFF
+].join('.');
+console.log("IP Address:", ipString);
+
+// Read timestamp
+let timestamp = view.getBigUint64(8);
+console.log("Timestamp:", new Date(Number(timestamp)).toISOString());
