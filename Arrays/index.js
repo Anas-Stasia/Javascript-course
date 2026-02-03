@@ -266,3 +266,34 @@ monthlySales.forEach((month, i) => {
     });
 });
 console.log(`Best week: Month ${bestMonth + 1}, Week ${bestWeek + 1}`);
+
+
+
+// To-do list with priorities
+let tasks = [
+    { id: 1, task: "Buy groceries", priority: "high", completed: false },
+    { id: 2, task: "Clean room", priority: "medium", completed: true },
+    { id: 3, task: "Study JavaScript", priority: "high", completed: false },
+    { id: 4, task: "Watch movie", priority: "low", completed: false },
+    { id: 5, task: "Exercise", priority: "medium", completed: true }
+];
+
+// Get all incomplete high-priority tasks
+let urgentTasks = tasks.filter(t => !t.completed && t.priority === "high");
+console.log("Urgent tasks:", urgentTasks);
+
+// Mark task as complete
+function completeTask(id) {
+    let task = tasks.find(t => t.id === id);
+    if (task) {
+        task.completed = true;
+        console.log(`Task "${task.task}" marked as complete!`);
+    }
+}
+
+completeTask(3);
+
+// Get task summaries
+let taskSummaries = tasks.map(t => `[${t.completed ? "✓" : " "}] ${t.task} (${t.priority})`);
+console.log("\nAll tasks:");
+taskSummaries.forEach(summary => console.log(summary));
