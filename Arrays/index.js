@@ -331,3 +331,32 @@ console.log("IP Address:", ipString);
 // Read timestamp
 let timestamp = view.getBigUint64(8);
 console.log("Timestamp:", new Date(Number(timestamp)).toISOString());
+
+// FIFO (First In, First Out) queue for printer jobs
+let printQueue = [];
+
+// Add print jobs
+function addPrintJob(document) {
+    printQueue.push(document);
+    console.log(`Added to queue: ${document}`);
+    console.log(`Queue length: ${printQueue.length}`);
+}
+
+// Process print jobs
+function processPrintJob() {
+    if (printQueue.length === 0) {
+        console.log("No jobs in queue");
+        return;
+    }
+    let job = printQueue.shift(); // Remove from front
+    console.log(`Printing: ${job}`);
+    console.log(`Remaining jobs: ${printQueue.length}`);
+}
+
+// Simulate printing
+addPrintJob("Report.pdf");
+addPrintJob("Invoice.docx");
+addPrintJob("Photo.jpg");
+processPrintJob(); // Prints Report.pdf
+processPrintJob(); // Prints Invoice.docx
+console.log("Current queue:", printQueue);
