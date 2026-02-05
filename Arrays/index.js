@@ -444,3 +444,60 @@ while (processes.length > 0) {
 }
 
 console.log(`All processes completed. Total time: ${totalTime}`);
+
+
+
+// Friend lists for social network
+let aliceFriends = ["Bob", "Charlie", "Diana", "Eve"];
+let bobFriends = ["Alice", "Charlie", "Frank", "Grace"];
+
+// Find mutual friends (intersection)
+function findMutualFriends(friends1, friends2) {
+    return friends1.filter(friend => friends2.includes(friend));
+}
+
+// Find all unique friends (union)
+function findAllFriends(friends1, friends2) {
+    return [...new Set([...friends1, ...friends2])];
+}
+
+// Find friends only in first list (difference)
+function findUniqueFriends(friends1, friends2) {
+    return friends1.filter(friend => !friends2.includes(friend));
+}
+
+// Suggest friends (friends of friends who aren't already friends)
+function suggestFriends(person, allUsers) {
+    let myFriends = allUsers[person];
+    let friendsOfFriends = [];
+    
+    myFriends.forEach(friend => {
+        if (allUsers[friend]) {
+            allUsers[friend].forEach(fof => {
+                if (fof !== person && !myFriends.includes(fof) && !friendsOfFriends.includes(fof)) {
+                    friendsOfFriends.push(fof);
+                }
+            });
+        }
+    });
+    
+    return friendsOfFriends;
+}
+
+console.log("Alice's friends:", aliceFriends);
+console.log("Bob's friends:", bobFriends);
+console.log("Mutual friends:", findMutualFriends(aliceFriends, bobFriends));
+console.log("All unique friends:", findAllFriends(aliceFriends, bobFriends));
+console.log("Alice's unique friends:", findUniqueFriends(aliceFriends, bobFriends));
+
+// Friend suggestions
+let users = {
+    "Alice": ["Bob", "Charlie", "Diana"],
+    "Bob": ["Alice", "Charlie", "Eve"],
+    "Charlie": ["Alice", "Bob", "Frank"],
+    "Diana": ["Alice"],
+    "Eve": ["Bob", "Frank"],
+    "Frank": ["Charlie", "Eve"]
+};
+
+console.log("\nFriend suggestions for Alice:", suggestFriends("Alice", users));
