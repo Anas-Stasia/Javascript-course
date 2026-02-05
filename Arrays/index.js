@@ -588,4 +588,3 @@ console.log("\nBrightness increased by 2:");
 applyBrightness(imageMatrix, 2).display();
 
 
-
