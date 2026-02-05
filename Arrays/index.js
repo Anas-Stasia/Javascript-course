@@ -501,3 +501,91 @@ let users = {
 };
 
 console.log("\nFriend suggestions for Alice:", suggestFriends("Alice", users));
+
+
+
+// 3x3 matrix for image rotation/transformation
+class Matrix {
+    constructor(data) {
+        this.data = data;
+        this.rows = data.length;
+        this.cols = data[0].length;
+    }
+    
+    // Rotate matrix 90 degrees clockwise
+    rotate90() {
+        let result = [];
+        for (let col = 0; col < this.cols; col++) {
+            let newRow = [];
+            for (let row = this.rows - 1; row >= 0; row--) {
+                newRow.push(this.data[row][col]);
+            }
+            result.push(newRow);
+        }
+        return new Matrix(result);
+    }
+    
+    // Flip matrix horizontally
+    flipHorizontal() {
+        return new Matrix(this.data.map(row => [...row].reverse()));
+    }
+    
+    // Flip matrix vertically
+    flipVertical() {
+        return new Matrix([...this.data].reverse());
+    }
+    
+    // Transpose matrix
+    transpose() {
+        let result = [];
+        for (let col = 0; col < this.cols; col++) {
+            let newRow = [];
+            for (let row = 0; row < this.rows; row++) {
+                newRow.push(this.data[row][col]);
+            }
+            result.push(newRow);
+        }
+        return new Matrix(result);
+    }
+    
+    display() {
+        console.log(this.data.map(row => row.join(" ")).join("\n"));
+    }
+}
+
+// Simulate a simple 4x4 image with grayscale values (0-9)
+let imageMatrix = new Matrix([
+    [1, 2, 3, 4],
+    [5, 6, 7, 8],
+    [9, 8, 7, 6],
+    [5, 4, 3, 2]
+]);
+
+console.log("Original Image:");
+imageMatrix.display();
+
+console.log("\nRotated 90° clockwise:");
+imageMatrix.rotate90().display();
+
+console.log("\nFlipped horizontally:");
+imageMatrix.flipHorizontal().display();
+
+console.log("\nFlipped vertically:");
+imageMatrix.flipVertical().display();
+
+console.log("\nTransposed:");
+imageMatrix.transpose().display();
+
+// Apply brightness filter (add value to all pixels)
+function applyBrightness(matrix, brightness) {
+    let result = matrix.data.map(row => 
+        row.map(pixel => Math.min(9, Math.max(0, pixel + brightness)))
+    );
+    return new Matrix(result);
+}
+
+console.log("\nBrightness increased by 2:");
+applyBrightness(imageMatrix, 2).display();
+
+
+
