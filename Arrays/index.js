@@ -360,3 +360,49 @@ addPrintJob("Photo.jpg");
 processPrintJob(); // Prints Report.pdf
 processPrintJob(); // Prints Invoice.docx
 console.log("Current queue:", printQueue);
+
+
+// LIFO (Last In, First Out) stack for browser navigation
+let history = [];
+let currentPage = "Home";
+let forwardHistory = [];
+
+// Visit new page
+function visitPage(page) {
+    history.push(currentPage);
+    currentPage = page;
+    forwardHistory = []; // Clear forward history
+    console.log(`Visiting: ${currentPage}`);
+}
+
+// Go back
+function goBack() {
+    if (history.length === 0) {
+        console.log("No pages to go back to");
+        return;
+    }
+    forwardHistory.push(currentPage);
+    currentPage = history.pop();
+    console.log(`Back to: ${currentPage}`);
+}
+
+// Go forward
+function goForward() {
+    if (forwardHistory.length === 0) {
+        console.log("No pages to go forward to");
+        return;
+    }
+    history.push(currentPage);
+    currentPage = forwardHistory.pop();
+    console.log(`Forward to: ${currentPage}`);
+}
+
+// Simulate browsing
+visitPage("Products");
+visitPage("Cart");
+visitPage("Checkout");
+goBack();     // Back to Cart
+goBack();     // Back to Products
+goForward();  // Forward to Cart
+console.log("Current page:", currentPage);
+console.log("History:", history);
