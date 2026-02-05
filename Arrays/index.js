@@ -406,3 +406,41 @@ goBack();     // Back to Products
 goForward();  // Forward to Cart
 console.log("Current page:", currentPage);
 console.log("History:", history);
+
+
+// Round-robin task scheduler (e.g., CPU scheduling)
+let processes = [
+    { id: 1, name: "Process A", timeRemaining: 8 },
+    { id: 2, name: "Process B", timeRemaining: 4 },
+    { id: 3, name: "Process C", timeRemaining: 6 },
+    { id: 4, name: "Process D", timeRemaining: 3 }
+];
+
+let timeQuantum = 2; // Time slice for each process
+let currentIndex = 0;
+let totalTime = 0;
+
+console.log("Starting Round-Robin Scheduling...\n");
+
+while (processes.length > 0) {
+    // Use modulo for circular access
+    let process = processes[currentIndex % processes.length];
+    
+    console.log(`Time ${totalTime}: Executing ${process.name}`);
+    
+    // Execute for time quantum or remaining time
+    let executionTime = Math.min(timeQuantum, process.timeRemaining);
+    process.timeRemaining -= executionTime;
+    totalTime += executionTime;
+    
+    if (process.timeRemaining === 0) {
+        console.log(`${process.name} completed at time ${totalTime}\n`);
+        processes.splice(currentIndex % processes.length, 1);
+        // Don't increment index when removing
+    } else {
+        console.log(`${process.name} has ${process.timeRemaining} units remaining\n`);
+        currentIndex++;
+    }
+}
+
+console.log(`All processes completed. Total time: ${totalTime}`);
